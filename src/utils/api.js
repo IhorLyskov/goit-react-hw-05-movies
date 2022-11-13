@@ -33,3 +33,28 @@ export async function getReviews(movieId) {
   const { data } = await axios.get(`/movie/${movieId}/reviews`);
   return data.results;
 }
+
+// const ChildComponent = () => {
+//   const [todos, setTodos] = useState([]);
+
+//   useEffect(() => {
+//     const controller = new AbortController();
+
+//     async function fetchData() {
+//       try {
+//         const res = await axios.get(
+//           'https://jsonplaceholder.typicode.com/todos',
+//           {
+//             signal: controller.signal,
+//           }
+//         );
+//         setTodos((prevTodos) => [...prevTodos, ...res.data]);
+//       } catch (error) {}
+//     }
+
+//     fetchData();
+
+//     return () => {
+//       controller.abort();
+//     };
+//   }, []);

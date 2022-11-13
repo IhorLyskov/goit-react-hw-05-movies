@@ -28,5 +28,12 @@ export const CastList = ({ casting }) => (
 );
 
 CastList.propTypes = {
-  casting: PropTypes.array.isRequired,
+  casting: PropTypes.arrayOf(
+    PropTypes.shape({
+      cast_id: PropTypes.number.isRequired,
+      profile_path: PropTypes.string,
+      original_name: PropTypes.string,
+      character: PropTypes.string,
+    })
+  ).isRequired,
 };

@@ -68,7 +68,7 @@ MovieDescription.propTypes = {
   movieDetails: PropTypes.shape({
     poster_path: PropTypes.string,
     original_title: PropTypes.string.isRequired,
-    release_date: PropTypes.string.isRequired,
+    release_date: PropTypes.string,
     vote_average: PropTypes.number.isRequired,
     overview: PropTypes.string,
     genres: PropTypes.array,
