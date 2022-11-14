@@ -1,4 +1,4 @@
-﻿import { Box } from '../Box/Box';
+import { Box } from '../Box/Box';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { DetailsLinks } from './DetailsLinks';
