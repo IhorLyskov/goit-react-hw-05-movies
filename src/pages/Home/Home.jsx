@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { getTrendingMovies } from '../../utils/api';
 import { Box } from '../../components/Box/Box';
 import { Title } from './Home.styled';
 import { ErrorMessage } from '../../components/Messages/Messages.styled';
 import { MoviesList } from '../../components/MoviesList/MoviesList';
 import Pagination from '../../components/Pagination/Pagination';
 import Loader from '../../components/Loader/Loader';
+import useTrending from '../../components/hooks/useTrending';
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState(null);
@@ -14,20 +14,25 @@ const Home = () => {
   const [isError, setIsError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const pageParams = Number(searchParams.get('page') ?? 1);
+  const { movies, somePage } = useTrending();
 
   useEffect(() => {
     setIsLoader(true);
-    setTrendingMovies(null);
-    getTrendingMovies(pageParams)
-      .then(movies => {
-        setTrendingMovies(movies);
-        setIsError(false);
-      })
-      .catch(error => {
-        setIsError(true);
-      })
-      .finally(() => setIsLoader(false));
-  }, [pageParams]);
+    somePage(pageParams);
+  }, [pageParams, somePage]);
+
+  useEffect(() => {
+    if (!movies) {
+      return;
+    } else if (movies === -1) {
+      setIsError(true);
+      setIsLoader(false);
+      return;
+    }
+    setTrendingMovies(movies);
+    setIsError(false);
+    setIsLoader(false);
+  }, [movies]);
 
   return (
     <Box>
