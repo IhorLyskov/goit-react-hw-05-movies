@@ -1,0 +1,2 @@
+.pagination{display:flex;justify-content:center;list-style:none}.link{background-color:#fff;border:2px solid #fff;border-radius:50%;color:#0d253f;cursor:pointer;display:block;padding:10px 15px;text-decoration:none}.item.active .link{background-color:#01b4e4;color:#fff}.item.active .link,.link:hover{border-color:#01b4e4}
+/*# sourceMappingURL=2.7f8b778d.chunk.css.map*/
