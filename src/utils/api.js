@@ -7,13 +7,6 @@ axios.defaults.params = {
   api_key: KEY,
 };
 
-export async function getTrendingMovies(page) {
-  const response = await axios.get('/trending/movie/day', {
-    params: { ...axios.defaults.params, page },
-  });
-  return response.data;
-}
-
 export async function searchMovies(query) {
   const { data } = await axios.get(`/search/movie?&query=${query}`);
   return data.results;
