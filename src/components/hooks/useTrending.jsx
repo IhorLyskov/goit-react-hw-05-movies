@@ -2,8 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import axios from 'axios';
 import { constAxios } from '../Constants/Constants';
 
-const useTrending = () => {
-  const [page, setPage] = useState(1);
+const useTrending = initPage => {
+  const [page, setPage] = useState(initPage);
   const [movies, setMovies] = useState(null);
 
   useEffect(() => {

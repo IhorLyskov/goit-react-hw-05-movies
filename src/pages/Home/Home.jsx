@@ -14,9 +14,10 @@ const Home = () => {
   const [isError, setIsError] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const pageParams = Number(searchParams.get('page') ?? 1);
-  const { movies, somePage } = useTrending();
+  const { movies, somePage } = useTrending(pageParams);
 
   useEffect(() => {
+    setTrendingMovies(null);
     setIsLoader(true);
     somePage(pageParams);
   }, [pageParams, somePage]);
